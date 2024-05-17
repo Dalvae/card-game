@@ -3,8 +3,18 @@ export interface Card {
   value: string;
 }
 
-const suits = ["corazones", "diamantes", "pica", "trebol"];
-const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const suits = [
+  "corazones", "diamantes", "pica", "trebol",
+  "corazones", "diamantes", "pica", "trebol",
+  "corazones", "diamantes", "pica", "trebol",
+  "corazones", "diamantes", "pica", "trebol",
+  ...Array(100).fill(["corazones", "diamantes", "pica", "trebol"]).flat(),
+];
+
+const values = [
+  "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K",
+  ...Array(100).fill(["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]).flat(),
+];
 
 export const createShuffledDeck = (): Card[] => {
   const deck: Card[] = [];

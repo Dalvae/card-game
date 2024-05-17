@@ -8,7 +8,7 @@ interface Card {
   value: string;
 }
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const [leftDeck, setLeftDeck] = useState<Stack<Card>>(
     new Stack(createShuffledDeck())
   );
