@@ -14,7 +14,7 @@ interface DeckProps {
 const Deck = memo(function Deck({ deck, onClick }: DeckProps) {
   const topCard = deck.peek();
   return (
-    <div className="relative flex justify-center items-center h-64 w-48 m-4">
+    <div className="relative flex justify-center items-center h-64 w-48 ">
       {topCard && (
         <div className="absolute" style={{ zIndex: deck.size() }}>
           <Card suit={topCard.suit} value={topCard.value} onClick={onClick} />
