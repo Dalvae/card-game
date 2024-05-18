@@ -1,6 +1,5 @@
-import React, { memo } from "react";
+import React from "react";
 import Card from "./Card";
-import { Stack } from "../utils/Stack";
 
 interface Card {
   suit: string;
@@ -8,20 +7,22 @@ interface Card {
 }
 
 interface DeckProps {
-  deck: Stack<Card>;
+  cards: Card[];
   onClick: () => void;
 }
-const Deck = memo(function Deck({ deck, onClick }: DeckProps) {
-  const topCard = deck.peek();
+
+const Deck: React.FC<DeckProps> = ({ cards, onClick }) => {
+  const topCard = cards[cards.length - 1];
+
   return (
     <div className="relative flex justify-center items-center h-64 w-48 m-4">
       {topCard && (
-        <div className="absolute" style={{ zIndex: deck.size() }}>
+        <div className="absolute" style={{ zIndex: cards.length }}>
           <Card suit={topCard.suit} value={topCard.value} onClick={onClick} />
         </div>
       )}
-      {deck.size() > 1 &&
-        [...Array(deck.size() - 1)].map((_, index) => (
+      {cards.length > 1 &&
+        [...Array(cards.length - 1)].map((_, index) => (
           <div
             key={index}
             className="absolute border rounded-lg w-32 h-48 bg-white transform"
@@ -29,12 +30,12 @@ const Deck = memo(function Deck({ deck, onClick }: DeckProps) {
               transform: `translateY(-${index * 2}px) translateX(-${
                 index * 2
               }px)`,
-              zIndex: deck.size() - index - 1,
+              zIndex: cards.length - index - 1,
             }}
           />
         ))}
     </div>
   );
-});
+};
 
 export default Deck;

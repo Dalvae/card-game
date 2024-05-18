@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({ suit, value, onClick }) => {
       <div className="flex items-center justify-center flex-grow">
         <div className="text-7xl">{suitSymbols[suit]}</div>
       </div>
-      <div className="absolute bottom-0 right-1 flex flex-col rotate-180 items-center  leading-none">
+      <div className="absolute bottom-0 right-1 flex flex-col rotate-180 items-center leading-none">
         <div className="text-2xl leading-none">{value}</div>
         <div className="text-2xl leading-none">{suitSymbols[suit]}</div>
       </div>
