@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo, useState } from "react";
 import Card from "./Card";
 import { Stack } from "../utils/Stack";
 
@@ -11,17 +11,39 @@ interface DeckProps {
   deck: Stack<Card>;
   onClick: () => void;
 }
+
 const Deck = memo(function Deck({ deck, onClick }: DeckProps) {
-  const topCard = deck.peek();
+  const [isHovered, setIsHovered] = useState(false);
+  const cardsToShow = isHovered
+    ? deck.items.slice(-3).reverse()
+    : deck.items.slice(-1);
+
   return (
-    <div className="relative flex justify-center items-center h-64 w-48 ">
-      {topCard && (
-        <div className="absolute" style={{ zIndex: deck.size() }}>
-          <Card suit={topCard.suit} value={topCard.value} onClick={onClick} />
+    <div
+      className="relative flex justify-center items-center h-64 w-48"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {cardsToShow.map((card, index) => (
+        <div
+          key={index}
+          className={`absolute transition-all duration-500 ease-in-out transform ${
+            isHovered ? "hover:translate-x-6 hover:-translate-y-6" : ""
+          }`}
+          style={{
+            zIndex: deck.size() + -index,
+            transform: isHovered
+              ? `rotate(-${index * 5}deg) scale(${
+                  1 + index * 0.1
+                }) translateX(-${index * 10}px) translateY(-${index * 10}px)`
+              : "none",
+          }}
+        >
+          <Card suit={card.suit} value={card.value} onClick={onClick} />
         </div>
-      )}
+      ))}
       {deck.size() > 1 &&
-        [...Array(deck.size() - 1)].map((_, index) => (
+        [...Array(deck.size() - cardsToShow.length)].map((_, index) => (
           <div
             key={index}
             className="absolute border rounded-lg w-32 h-48 bg-white transform"
@@ -29,7 +51,7 @@ const Deck = memo(function Deck({ deck, onClick }: DeckProps) {
               transform: `translateY(-${index * 2}px) translateX(-${
                 index * 2
               }px)`,
-              zIndex: deck.size() - index - 1,
+              zIndex: -index - 1,
             }}
           />
         ))}
