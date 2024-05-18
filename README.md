@@ -1,30 +1,10 @@
-# React + TypeScript + Vite
+# Juego de carta para entrevista tecnica Honu
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto tiene 4 branch,
 
-Currently, two official plugins are available:
+- `main` que es encargada de mostrar la primera parte de los requerimientos
+- `niveldos` que es encargada de mostrar la segunda parte de los requerimientos
+- `test-array` una rama con 2580 cartas y test automatizados de rendimientos de los metodos de array
+- `test-stack` lo mismo pero especializado en los test de stacks, no correr estas ramas en el navegado
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+> **Advertencia:** Las ramas `test-array` y `test-stack` son exclusivamente para realizar pruebas de rendimiento y no deben ser ejecutadas en el navegador.
