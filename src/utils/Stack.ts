@@ -1,6 +1,5 @@
-//crear una clase stack para la pila de cartas
 export class Stack<T> {
-  private items: T[];
+  items: T[];
 
   constructor(initialItems: T[] = []) {
     this.items = initialItems;
@@ -35,7 +34,7 @@ export class Stack<T> {
 
   clone(): Stack<T> {
     const clonedStack = new Stack<T>();
-    clonedStack.items = [...this.items]; // Shallow copy the items
+    clonedStack.items = [...this.items]; 
     return clonedStack;
   }
 }
