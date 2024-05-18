@@ -22,7 +22,7 @@ const App: React.FC = () => {
       const randomIndex = Math.floor(Math.random() * leftDeck.size());
       setTargetValue(leftDeck.items[randomIndex].value);
     }
-  }, [leftDeck]);
+  }, []);
 
   useEffect(() => {
     if (
