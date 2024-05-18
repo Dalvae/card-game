@@ -74,7 +74,7 @@ const App: React.FC = () => {
   return (
     <div className=" relative flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-2xl font-bold mx-[10%] text-center">
-        Haz coincidir todas las cartas con: {targetValue}
+        Haz coincidir todas las cartas en: {targetValue}
       </h1>
       <div className="flex flex-col md:flex-row justify-center space-y-1 md:space-y-0 md:space-x-4 mt-8">
         <Deck deck={leftDeck} onClick={() => handleCardClick("left")} />
